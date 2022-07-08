@@ -315,9 +315,11 @@ int main(int argc, char **argv) {
     double t_resize = 0.f;
     double t_track = 0.f;
     rs2::frameset fs;
+    
+    Sophus::SE3f cameraPose;
 
     // while (!SLAM.isShutDown())
-    for(int ni=0; ni<100; ni++)    
+    for(int ni=0; ni<300; ni++)    
     {
         {
             std::unique_lock<std::mutex> lk(imu_mutex);
@@ -390,7 +392,8 @@ int main(int argc, char **argv) {
     #endif
 #endif
         // Pass the image to the SLAM system
-        SLAM.TrackRGBD(im, depth, timestamp); //, vImuMeas); depthCV
+        cameraPose = SLAM.TrackRGBD(im, depth, timestamp); //, vImuMeas); depthCV
+        cout << cameraPose << "\n";
 
 #ifdef REGISTER_TIMES
     #ifdef COMPILEDWITHC11
