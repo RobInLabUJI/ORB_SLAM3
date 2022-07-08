@@ -318,7 +318,8 @@ int main(int argc, char **argv) {
     
     Sophus::SE3f cameraPose;
 
-    // while (!SLAM.isShutDown())
+    // SLAM.ActivateLocalizationMode();
+
     for(int ni=0; ni<300; ni++)    
     {
         {
