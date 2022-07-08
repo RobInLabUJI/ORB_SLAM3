@@ -393,7 +393,7 @@ int main(int argc, char **argv) {
 #endif
         // Pass the image to the SLAM system
         cameraPose = SLAM.TrackRGBD(im, depth, timestamp); //, vImuMeas); depthCV
-        cout << cameraPose << "\n";
+        cout << cameraPose.translation() << "\n";
 
 #ifdef REGISTER_TIMES
     #ifdef COMPILEDWITHC11
