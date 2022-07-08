@@ -316,7 +316,8 @@ int main(int argc, char **argv) {
     double t_track = 0.f;
     rs2::frameset fs;
 
-    while (!SLAM.isShutDown())
+    // while (!SLAM.isShutDown())
+    for(int ni=0; ni<100; ni++)    
     {
         {
             std::unique_lock<std::mutex> lk(imu_mutex);
@@ -401,7 +402,11 @@ int main(int argc, char **argv) {
         SLAM.InsertTrackTime(t_track);
 #endif
     }
+    SLAM.Shutdown();
+    SLAM.SaveTrajectoryTUM("CameraTrajectory.txt");
+    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");
     cout << "System shutdown!\n";
+    return 0;
 }
 
 rs2_stream find_stream_to_align(const std::vector<rs2::stream_profile>& streams)
