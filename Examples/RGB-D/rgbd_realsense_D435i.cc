@@ -116,8 +116,8 @@ int main(int argc, char **argv) {
         bFileName = true;
     }
 
-    // Load map and save points 
-    
+    // Load map and print points 
+    /*
     ORB_SLAM3::System tempSLAM(argv[1],argv[2],ORB_SLAM3::System::RGBD, false, 0, file_name);
     ORB_SLAM3::Atlas* mpAtlas = tempSLAM.GetAtlas();
     std::vector<ORB_SLAM3::Map*> allMaps = mpAtlas->GetAllMaps();
@@ -133,6 +133,7 @@ int main(int argc, char **argv) {
     }
 
     return 0;
+    */
 
     struct sigaction sigIntHandler;
 
