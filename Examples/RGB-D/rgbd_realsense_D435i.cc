@@ -115,6 +115,17 @@ int main(int argc, char **argv) {
         bFileName = true;
     }
 
+    // Load map and save points
+    ORB_SLAM3::System tempSLAM(argv[1],argv[2],ORB_SLAM3::System::RGBD, false, 0, file_name);
+    std::vector<ORB_SLAM3::MapPoint*> allMapPoints = tempSLAM.GetMap()->GetAllMapPoints();
+	std::cout << "# size=" << allMapPoints.size() << std::endl;
+	std::cout << "# x,y,z" << std::endl;
+	for (auto p : allMapPoints) {
+		Eigen::Matrix<double, 3, 1> v = ORB_SLAM3::Converter::toVector3d(p->GetWorldPos());
+		std::cout << v.x() << "," << v.y() << "," << v.z() << std::endl;
+	}
+    return 0;
+    
     struct sigaction sigIntHandler;
 
     sigIntHandler.sa_handler = exit_loop_handler;
