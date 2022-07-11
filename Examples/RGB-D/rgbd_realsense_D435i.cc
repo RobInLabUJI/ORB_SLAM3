@@ -34,6 +34,7 @@
 
 
 #include <System.h>
+#include <Atlas.h>
 
 using namespace std;
 
@@ -114,6 +115,13 @@ int main(int argc, char **argv) {
         file_name = string(argv[argc - 1]);
         bFileName = true;
     }
+
+    // Load map and save points 
+    
+    ORB_SLAM3::System tempSLAM(argv[1],argv[2],ORB_SLAM3::System::RGBD, false, 0, file_name);
+    ORB_SLAM3::Atlas* mpAtlas = tempSLAM.GetAtlas();
+
+    return 0;
 
     struct sigaction sigIntHandler;
 

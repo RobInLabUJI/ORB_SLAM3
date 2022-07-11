@@ -487,6 +487,11 @@ void System::DeactivateLocalizationMode()
     mbDeactivateLocalizationMode = true;
 }
 
+Atlas* System::GetAtlas()
+{
+    return mpAtlas;
+}
+
 bool System::MapChanged()
 {
     static int n=0;
