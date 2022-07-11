@@ -192,8 +192,6 @@ public:
     void InsertTrackTime(double& time);
 #endif
 
-    Atlas* GetAtlas();
-    
 private:
 
     void SaveAtlas(int type);
