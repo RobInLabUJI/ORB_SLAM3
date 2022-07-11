@@ -120,6 +120,17 @@ int main(int argc, char **argv) {
     
     ORB_SLAM3::System tempSLAM(argv[1],argv[2],ORB_SLAM3::System::RGBD, false, 0, file_name);
     ORB_SLAM3::Atlas* mpAtlas = tempSLAM.GetAtlas();
+    std::vector<ORB_SLAM3::Map*> allMaps = mpAtlas->GetAllMaps();
+    std::cout << "# number of maps = " << allMaps.size() << std::endl;
+    std::vector<ORB_SLAM3::MapPoint*> allMap0Points = allMaps[0]->GetAllMapPoints();
+    std::cout << "# map 0 size=" << allMap0Points.size() << std::endl;
+    std::vector<ORB_SLAM3::MapPoint*> allMap1Points = allMaps[1]->GetAllMapPoints();
+    std::cout << "# map 1 size=" << allMap1Points.size() << std::endl;
+
+    for (auto p : allMap0Points) {
+	Eigen::Vector3f v = p->GetWorldPos();
+	std::cout << v.x() << "," << v.y() << "," << v.z() << std::endl;
+    }
 
     return 0;
 
