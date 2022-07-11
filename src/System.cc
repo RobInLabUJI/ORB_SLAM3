@@ -1505,10 +1505,6 @@ bool System::LoadAtlas(int type)
     return false;
 }
 
-Atlas* GetAtlas() {
-  return mpAtlas;
-}
-  
 string System::CalculateCheckSum(string filename, int type)
 {
     string checksum = "";
